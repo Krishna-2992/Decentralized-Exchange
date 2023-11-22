@@ -22,7 +22,7 @@ contract PoolFactory {
     );
 
     function createPool(address _token0, address _token1, uint8 _fee) external {
-        require(_fee < 100, "Fee should be <1%");
+        require(_fee <= 100, "Fee should be <1%");
         require(_token0 != _token1, "Same token not allowed");
         require(
             s_tokensToPool[_token0][_token1].fee != _fee && 
